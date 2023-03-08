@@ -80,6 +80,8 @@ spec:
           sh 'sed -i "s/image:.*/image: ${IMAGE_REGISTRY_ACCOUNT}\\/${IMAGE_NAME}:${BUILD_NUMBER}/g" deployment.yaml'
           sh 'grep image deployment.yaml'
           sh 'git add deployment.yaml'
+          sh 'git config --global user.name Jang'
+          sh 'git config --global user.email c1t1d0s7@gmail.com'
           sh 'git commit -m "Jenkins Build Number - ${BUILD_NUMBER}"'
         }
       }
