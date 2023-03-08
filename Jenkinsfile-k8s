@@ -77,7 +77,8 @@ spec:
       steps {
         container('maven') {
           git branch: 'main', url: 'https://github.com/c1t1d0s7/hello-kube.git'
-          sh 'sed -i "s/image:.*/image: c1t1d0s7\\/hello-world:${env.BUILD_NUMBER}/g" deployment.yaml'
+          sh 'sed -i "s/image:.*/image: c1t1d0s7\\/hello-world:${BUILD_NUMBER}/g" deployment.yaml'
+          sh 'grep image deployment.yaml'
         }
       }
     }
