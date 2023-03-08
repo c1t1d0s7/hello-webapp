@@ -77,8 +77,10 @@ spec:
       steps {
         container('maven') {
           git branch: 'main', url: 'https://github.com/c1t1d0s7/hello-kube.git'
-          sh 'sed -i "s/image:.*/image: c1t1d0s7\\/hello-world:${BUILD_NUMBER}/g" deployment.yaml'
+          sh 'sed -i "s/image:.*/image: ${IMAGE_REGISTRY_ACCOUNT}\\/${IMAGE_NAME}:${BUILD_NUMBER}/g" deployment.yaml'
           sh 'grep image deployment.yaml'
+          sh 'git add deployment.yaml'
+          sh 'git commit -m "Jenkins Build Number - ${BUILD_NUMBER}"'
         }
       }
     }
