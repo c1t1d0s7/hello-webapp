@@ -65,10 +65,10 @@ spec:
     stage('Build & Tag Docker Image') {
       steps {
         container('kaniko') {
-          sh 'executor --dockerfile=Dockerfile \
+          sh "executor --dockerfile=Dockerfile \
             --context=dir://${env.WORKSPACE} \
             --destination=${params.IMAGE_REGISTRY_ACCOUNT}/${params.IMAGE_NAME}:${env.BUILD_NUMBER} \
-            --destination=${params.IMAGE_REGISTRY_ACCOUNT}/${params.IMAGE_NAME}:latest'
+            --destination=${params.IMAGE_REGISTRY_ACCOUNT}/${params.IMAGE_NAME}:latest"
         }
       }
     }
